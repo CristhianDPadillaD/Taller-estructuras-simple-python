@@ -24,14 +24,39 @@ def agregarContacto ():
     }
     contacto.append(nuevo_contacto)
     todosContactos.append(contacto_resumen)
-    print("Contacto agregado con éxito.") 
+    print("Contacto agregado con éxito") 
 
-def listarContacto ():
-        print (contacto)    
+def listarContacto ():  
+    if contacto: 
+        id = input("Digite la cedula del contacto que desea buscar: ")
+        for contactoActual in contacto:
 
+            if contactoActual["Cedula"] == id:
+                    print("Información del contacto:")
+                    print("Nombre:", contactoActual["Nombre"])
+                    print("Apellido:", contactoActual["Apellido"])
+                    print("Cédula:", contactoActual["Cedula"])
+                    print("Celular:", contactoActual["Celular"])
+                    print("Correo:", contactoActual["Correo"])
+                    print("Dirección:", contactoActual["Direccion"])
+                    
+                    break
+        else:
+            print("No se encontró ningún contacto con la cédula proporcionada")
+    else: 
+        print("No hay contactos registrados")
+  
 def listarTodosContactos ():
-    print (todosContactos)
-    
+    if len(todosContactos) == 1:
+        print("Existe ", len(todosContactos), " contacto")
+        for contacto in todosContactos:
+            print(contacto)
+    elif len(todosContactos)>1:
+        print("Existen ", len(todosContactos), " contactos")
+        for contacto in todosContactos:
+            print(contacto)
+    else:
+        print("No hay contactos registrados")
 
 
 opcion =0
@@ -57,6 +82,7 @@ while (opcion != 6):
     elif(opcion ==2 ):
         listarTodosContactos()
     elif (opcion ==3):
+    
         listarContacto()
     elif (opcion ==4):
         print("Es la opcion cuatro")
